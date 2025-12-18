@@ -13,5 +13,13 @@ public class Main {
 
         Person p3 = new Person(20);
         p3.info();
+
+        Car c1 = new Car();
+        c1.colour = "RED";
+        c1.year = 2010;
+        c1.move();
+
+        Car c2 = new Car("BLUE", 2019);
+        c2.move();
     }
 }
