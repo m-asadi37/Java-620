@@ -4,18 +4,28 @@ import java.time.LocalDate;
 
 public class Student {
 
+    private int id;
     private String name;
     private String family;
     private double grade;
     private LocalDate birthdate;
     private String major;
 
-    public Student(String name, String family, LocalDate birthdate, String major) {
+    public Student(int id, String name, String family, LocalDate birthdate, String major) {
+        this.id = id;
         this.name = name;
         this.family = family;
         this.birthdate = birthdate;
         this.major = major;
         this.grade = 0.0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
