@@ -4,8 +4,6 @@ import entity.Student;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -19,20 +17,63 @@ public class Application {
 
         boolean isExit = false;
         while (!isExit) {
-            int choice = printMenu();
+            int menu = printMenu();
 
-            switch (choice) {
+            switch (menu) {
                 case 1 -> {
-                    int choice2 = printStudentMenu();
-                    switch (choice2) {
-                        case 1 -> addStudent();
-                        case 2 -> updateStudent();
+                    boolean isBack = false;
+                    while (!isBack) {
+                        int submenu = printStudentMenu();
+                        switch (submenu) {
+                            case 1 -> addStudent();
+                            case 2 -> updateStudent();
+                            case 3 -> infoStudent();
+                            case 4 -> listStudents();
+                            case 5 -> deleteStudent();
+                            case 0 -> isBack = true;
+                        }
                     }
                 }
                 case 0 -> isExit = true;
 
             }
         }
+    }
+
+    private static void deleteStudent() {
+        System.out.print("id: ");
+        int id = input.nextInt();
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null && students[i].getId() == id) {
+                students[i] = null;
+                System.out.println(">> student " + id + " has been deleted!");
+                return;
+            }
+        }
+        System.out.println(">> student not found!");
+    }
+
+    private static void listStudents() {
+        for (Student find : students) {
+            if (find != null) {
+                find.showInfo();
+            }
+        }
+    }
+
+    private static void infoStudent() {
+        System.out.print("id: ");
+        int id = input.nextInt();
+        boolean flag = false;
+        for (Student find : students) {
+            if (find != null && find.getId() == id) {
+                find.showInfo();
+                flag = true;
+                break;
+            }
+        }
+        if (!flag)
+            System.out.println(">> student not found!");
     }
 
     private static void updateStudent() {
@@ -44,9 +85,10 @@ public class Application {
             if (student != null && student.getId() == id) {
                 student.setGrade(grade);
                 System.out.println(">> student updated!");
-                break;
+                return;
             }
         }
+        System.out.println(">> student not found!");
     }
 
     private static void addStudent() {
@@ -78,7 +120,7 @@ public class Application {
         System.out.println("--- 3. info     ---");
         System.out.println("--- 4. list     ---");
         System.out.println("--- 5. delete   ---");
-        System.out.println("--- 0. EXIT     ---");
+        System.out.println("--- 0. BACK     ---");
         return input.nextInt();
     }
 

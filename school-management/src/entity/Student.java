@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Student {
 
@@ -66,5 +67,10 @@ public class Student {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public void showInfo() {
+        System.out.printf("[id:'%d', name: '%s', family: '%s', birthdate: '%s',  major: '%s',  grade: '%.2f']\n",
+                id, name, family, birthdate.format(DateTimeFormatter.ISO_DATE), major, grade);
     }
 }
