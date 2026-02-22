@@ -1,4 +1,4 @@
-package serice;
+package service;
 
 import entity.Teacher;
 

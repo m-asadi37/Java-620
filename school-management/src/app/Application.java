@@ -1,12 +1,8 @@
 package app;
 
-import entity.Student;
-import entity.Teacher;
-import serice.StudentService;
-import serice.TeacherService;
+import service.StudentService;
+import service.TeacherService;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Application {
