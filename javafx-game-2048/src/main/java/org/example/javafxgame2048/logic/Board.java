@@ -17,13 +17,12 @@ public class Board {
                 board[i][j]=0;
             }
         }
+        generateRandomTile();
+        generateRandomTile();
     }
     public void play(){
         System.out.println("Welcome to 2048!");
         System.out.println("Use 'W', 'A', 'S', 'D' to move the tiles. Enter 'Q' to quit.");
-        generateRandomTile();
-        generateRandomTile();
-        display();
         System.out.println();
         Scanner in = new Scanner(System.in);
         String input = "";
@@ -68,7 +67,7 @@ public class Board {
         return false;
     }
 
-    private void display() {
+    public void display() {
         System.out.println("-----------------------------");
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
@@ -79,7 +78,8 @@ public class Board {
         }
     }
 
-    private void moveUp() {
+    public void moveUp() {
+        System.out.println("moveUp...");
         for (int col = 0; col < BOARD_SIZE; col++) {
             for (int row = 0; row < BOARD_SIZE - 1; row++) {
                 if (board[row][col] == 0) {
@@ -105,7 +105,8 @@ public class Board {
         }
         generateRandomTile();
     }
-    private void moveLeft(){
+    public void moveLeft(){
+        System.out.println("moveLeft...");
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 if(board[row][col]==0){
@@ -132,7 +133,8 @@ public class Board {
         }
         generateRandomTile();
     }
-    private void moveRight(){
+    public void moveRight(){
+        System.out.println("moveRight...");
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = BOARD_SIZE -1; col >= 0; col--) {
                 if(board[row][col]==0){
@@ -159,7 +161,8 @@ public class Board {
         }
         generateRandomTile();
     }
-    private void moveDown(){
+    public void moveDown(){
+        System.out.println("moveDown...");
         for (int col = 0; col < BOARD_SIZE; col++) {
             for (int row = BOARD_SIZE -1; row >= 0; row--) {
                 if(board[row][col]==0){
@@ -205,5 +208,9 @@ public class Board {
             }
         }
         return empty;
+    }
+
+    public int[][] getBoard() {
+        return board;
     }
 }
